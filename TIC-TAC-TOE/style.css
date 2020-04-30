@@ -1,0 +1,27 @@
+body {
+    align-content: center;
+    font: 0.8em Arial, Helvetica, sans-sefif;
+    background: #d7e1f2;
+    color: rgb(66, 66, 53)
+}
+
+td { 
+    margin: 0 auto;
+    border: 40px solid white;
+    background-color: azure;
+}
+
+tr{
+    background-color: azure;
+}
+
+table {
+    margin-left:auto;
+    margin-right:auto;
+    border: azure;
+    background-color: beige;
+}
+#button {
+    text-align: center;
+}
+
