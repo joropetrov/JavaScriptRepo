@@ -2,7 +2,6 @@ body {
     align-content: center;
     font: 0.8em Arial, Helvetica, sans-sefif;
     background: #d7e1f2;
-    color: rgb(66, 66, 53)
 }
 
 td { 
@@ -12,6 +11,7 @@ td {
 }
 
 tr{
+    font-size: 30px;
     background-color: azure;
 }
 
@@ -25,3 +25,9 @@ table {
     text-align: center;
 }
 
+p {
+    text-align: center;
+    font-family: italic;
+    font-size: 20px;
+    color: rgb(124, 150, 30);
+}
