@@ -13,7 +13,7 @@
                 const clickedCellIndex = parseInt(
                         clickedCell.getAttribute('id')
                 );
-                if (gameIsOn) {
+                if ((gameIsOn)) {
 
                         if (clickedCell.innerHTML !== "") {
                                 return;
@@ -22,23 +22,31 @@
                                 clickedCell.innerHTML = "X";
 
                                 matrixReplacer(winningConditionsX, clickedCellIndex, "X");
-                                console.log(winningConditionsX);
-                                checkForWin(winningConditionsX, "X", winText)
-                        }
-                        else if (clickedCell.innerHTML === "" && counter % 2 !== 0) {
+                                checkForWin(winningConditionsX, "X", winText);
+                                evenCheck(counter);
+
+                        } else if (clickedCell.innerHTML === "" && counter % 2 !== 0) {
                                 clickedCell.innerHTML = "O";
 
                                 matrixReplacer(winningConditionsO, clickedCellIndex, "Y");
-                                console.log(winningConditionsO);
                                 checkForWin(winningConditionsO, "O", winText);
+                                evenCheck(counter);
                         }
-                        counter++;
 
+                        counter++;
                 }
+
         }
 
         document.querySelector('#resetButton').addEventListener('click', resetGameButton);
 
+        function evenCheck(digit) {
+                if (digit == 8 && gameIsOn === true) {
+
+                        winText.innerHTML = "Draw! Please try again :-)";
+                        winText.style.display = "block";
+                }
+        }
 
         function resetGameButton() {
                 counter = 0;
@@ -105,6 +113,7 @@
         ];
 
         function checkForWin(matrix, XorO, winText) {
+
                 for (let i = 0; i < matrix.length; i++) {
 
                         for (let b = 0; b < matrix.length; b++) {
@@ -113,15 +122,17 @@
                                 let f = matrix[i][b + 2];
 
                                 if (d === e && e === f) {
-                                        console.log(`Congrationlations, Mr.${XorO}!!! You've WON!`);
+                                        console.log(`Congrationlations, Mr. "${XorO}" !!! You've WON!`);
                                         gameIsOn = false;
 
-                                        winText.innerHTML = `Congrationlations, Mr.${XorO}!!! You've WON!`;
+                                        winText.innerHTML = `Congrationlations, Mr. "${XorO}" !!! You've WON!`;
                                         winText.style.display = "block";
                                 }
+
                                 break;
                         }
                 }
+
         }
 
 })();
