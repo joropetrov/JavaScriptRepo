@@ -6,9 +6,41 @@ function solve() {
         u: 21, v: 22, w: 23, x: 24, y: 25, z: 26
     };
 
-    let liElements = document.getElementsByTagName('li');
-    
+    let lettersObjLenght = Object.keys(lettersObject).length;
+    let olElement = document.querySelector('ol');
     let button = document.getElementsByTagName('button')[0];
+    
+    createLettersList();
+    clearText();
+
+    function createLettersList(){
+
+        for (let index = 0; index < lettersObjLenght; index++) {
+
+            let checkLetter = Object.keys(lettersObject)[index];
+            let liElement = document.createElement('li');
+            liElement.id=`${checkLetter}`;
+            let p = document.createElement('p');
+            p.id = `${checkLetter}`;
+            p.classList="thin-red-border";
+            p.innerText = "Clear Text";
+            olElement.appendChild(liElement);
+            olElement.appendChild(p);
+        }
+    }
+    
+    function clearText() {
+        for (let a = 0; a < lettersObjLenght; a++) {
+            let currentParagrapfEl = document.querySelector(`p[id="${Object.keys(lettersObject)[a]}"]`);
+            let currentLiEl = document.querySelector(`li[id="${Object.keys(lettersObject)[a]}"]`);
+
+            currentParagrapfEl.addEventListener('click', () => {
+                currentLiEl.innerText = '';
+            })
+
+            currentParagrapfEl
+        }
+    }
 
     button.addEventListener('click', insertNameInTable);
 
@@ -17,18 +49,20 @@ function solve() {
         let name = document.getElementsByTagName('input')[0].value;
         
         if (name !== undefined) {
-
-            let  correctIndexOfLiElement = lettersObject[`${name[0]}`] - 1 ;
+            let  correctIndexOfLiElement = lettersObject[`${name[0]}`] - 1;
+            if (isNaN(correctIndexOfLiElement)) {
+                return;
+            }
     
-            let correctLiEl = liElements[correctIndexOfLiElement];
+            let correctLiEl = document.getElementById(`${name[0]}`);
     
             if (correctLiEl.innerText !== '') {
                 correctLiEl.innerText += `, ${name}`;
             } else{
                 correctLiEl.innerText += name;
             }
-            
         }
+        document.getElementsByTagName('input')[0].value ='';
         return;
     }
 }
