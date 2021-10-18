@@ -8,10 +8,33 @@ function solve() {
 
     let lettersObjLenght = Object.keys(lettersObject).length;
     let olElement = document.querySelector('ol');
-    let button = document.getElementsByTagName('button')[0];
+    let button = document.querySelector('button');
+    
     
     createLettersList();
     clearText();
+    checkedCheckBoxes();
+
+
+    function checkedCheckBoxes() {
+        let checkBoxes = document.querySelectorAll('li input');
+
+        for (let b = 0; b < lettersObjLenght; b++) {
+            let checkBoxEl = checkBoxes[b];
+
+            checkBoxEl.addEventListener('change', () =>{
+
+                let currentLi = checkBoxEl.parentElement;
+                let spanEl = currentLi.querySelector('span');
+                if (checkBoxEl.checked) {
+                spanEl.style="text-decoration:line-through";
+                return;
+                } else{
+                    spanEl.style="text-decoration: none";
+                }
+            });
+        }
+    }
 
     function createLettersList(){
 
@@ -19,8 +42,13 @@ function solve() {
 
             let checkLetter = Object.keys(lettersObject)[index];
             let liElement = document.createElement('li');
-            liElement.id=`${checkLetter}`;
+            let input = document.createElement('input');
             let p = document.createElement('p');
+            input.id = `${checkLetter}`;
+            input.type="checkbox";
+            liElement.id=`${checkLetter}`;
+            liElement.append(input);
+            liElement.append(document.createElement('span'));
             p.id = `${checkLetter}`;
             p.classList="thin-red-border";
             p.innerText = "Clear Text";
@@ -35,10 +63,11 @@ function solve() {
             let currentLiEl = document.querySelector(`li[id="${Object.keys(lettersObject)[a]}"]`);
 
             currentParagrapfEl.addEventListener('click', () => {
-                currentLiEl.innerText = '';
-            })
-
-            currentParagrapfEl
+                currentLiEl.querySelector('span').innerText = '';
+                currentLiEl.querySelector('span').style="text-decoration: none";
+                currentLiEl.querySelector('input').checked = false;
+                
+            });
         }
     }
 
@@ -56,10 +85,10 @@ function solve() {
     
             let correctLiEl = document.getElementById(`${name[0]}`);
     
-            if (correctLiEl.innerText !== '') {
-                correctLiEl.innerText += `, ${name}`;
+            if (correctLiEl.querySelector('span').innerText !== '') {
+                correctLiEl.querySelector('span').innerText += `, ${name}`;
             } else{
-                correctLiEl.innerText += name;
+                correctLiEl.querySelector('span').innerText += name;
             }
         }
         document.getElementsByTagName('input')[0].value ='';

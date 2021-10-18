@@ -5,6 +5,9 @@ html {
     font-family: "Lato", sans-serif;
     color: #234465;
 }
+input[type="checkbox"] {
+    margin: 1%;
+}
   .thin-red-border {
     border-color: black;
     border-width: 2px;
