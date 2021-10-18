@@ -5,13 +5,31 @@ html {
     font-family: "Lato", sans-serif;
     color: #234465;
 }
-
+  .thin-red-border {
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    transition: box-shadow .6s;
+  }
+  .thin-red-border:hover {
+    box-shadow: 0 0 11px rgba(190, 4, 4, 0.2); 
+  }
+p {
+    margin-left: 40%;
+    width: 20%;
+    color: goldenrod;
+    border-width: 16px;
+    font-size: small;
+    cursor: pointer;
+}
 #main {
     width: 70%;
     margin: 35px auto;
     text-align: center;
 }
-
+button {
+    cursor:pointer;
+}
 input[type="button"], button {
     padding: 0.3rem 0.5rem;
     font-size: 0.7em;
@@ -32,7 +50,6 @@ ol li {
     padding-left: 15px;
     text-align: left;
     font-family: 'Just Another Hand', cursive;
-
 }
 
 h1 {
@@ -44,16 +61,15 @@ h1 {
     margin-top: 2%;
     margin-left: 2%;
 }
-
 input, button {
-    font-size: 24px;
+    font-size: 20px;
     margin: 0 auto;
     margin-left: 2%;
     padding: 19px 27px;
     font-weight: bold;
     text-transform: uppercase;
+    color: aqua;
 }
-
 #exercise article input {
     width: 82%;
     border: 2px solid #b6c6d7;
